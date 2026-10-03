@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
-const API = "http://127.0.0.1:5000/api";
+const API = "https://network-intrusion-detection-system-wgn8.onrender.com/api";
 
 function StatCard({ title, value, subtitle, danger }) {
   return (
