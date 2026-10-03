@@ -1,205 +1,96 @@
-# Network Intrusion Detection System (IDS) Simulation
+# 🛡️ Network Intrusion Detection System (IDS) Simulation
 
-A defensive cybersecurity project that simulates network traffic, detects suspicious behavior using rule-based and anomaly-based techniques, applies optional machine learning, calculates risk scores, generates security alerts, and presents the results through a SOC-style dashboard.
+A defensive cybersecurity project that simulates a **Network Intrusion Detection System (IDS)** using synthetic network traffic.
 
-> **Defensive Cybersecurity Project:** This project uses synthetic network-flow data only. It does not scan, attack, probe, exploit, or disrupt external systems.
+The system analyzes network-flow records using **rule/signature detection, anomaly detection, machine learning, and risk scoring**, generates security alerts, stores results in SQLite, and presents them through a **React-based SOC dashboard**.
+
+> **Educational / Defensive Project:** This project uses synthetic network traffic only. It does not perform real-world scanning, exploitation, probing, DDoS attacks, or interaction with third-party systems.
 
 ---
 
-## 📌 Overview
+## 🚀 Live Demo
 
-The **Network Intrusion Detection System (IDS) Simulation** is an educational cybersecurity platform designed to demonstrate how an IDS can monitor network-flow information and identify potentially suspicious behavior.
+### Frontend — SOC Dashboard
 
-The system follows this pipeline:
+https://network-ids-dashboard.onrender.com/
+
+### Backend API
+
+https://network-intrusion-detection-system-wgn8.onrender.com/
+
+### Dashboard Statistics API
+
+https://network-intrusion-detection-system-wgn8.onrender.com/api/dashboard/stats
+
+---
+
+## 📌 Project Overview
+
+Traditional network monitoring can generate large amounts of traffic information that security analysts need to interpret.
+
+This project demonstrates a simplified SOC-style detection pipeline:
 
 ```text
 Synthetic Network Traffic
           ↓
-    Feature Extraction
+Feature Extraction
           ↓
- ┌──────────────────────┐
- │ Rule-Based Detection │
- │ Anomaly Detection    │
- │ ML Detection         │
- └──────────────────────┘
+Rule / Signature Detection
           ↓
-      Risk Engine
+Anomaly Detection
           ↓
-     Alert Engine
+Machine Learning
           ↓
-      SQLite Database
+Risk Scoring
           ↓
-      SOC Dashboard
+Security Alerts
           ↓
- Analyst Investigation
+SQLite Database
+          ↓
+Flask REST API
+          ↓
+React SOC Dashboard
 ```
 
-The project intentionally focuses on **detection and investigation rather than prevention**.
-
----
-
-## 🎯 Problem Statement
-
-Modern networks generate large volumes of traffic that can make manual security monitoring difficult.
-
-Security teams need mechanisms that can:
-
-* Monitor network activity
-* Extract useful security features
-* Identify abnormal behavior
-* Detect known suspicious patterns
-* Assign risk levels
-* Generate actionable alerts
-* Support analyst investigation
-* Provide security analytics
-
-This project demonstrates these concepts in a safe, isolated environment using synthetic network-flow data.
+The dashboard allows users to monitor traffic statistics, suspicious activity, alert types, risk scores, and recent security alerts.
 
 ---
 
 ## 🎯 Objectives
 
-The main objectives are:
-
-1. Generate realistic synthetic network-flow records.
-2. Create a dataset containing at least 5,000 flow records.
-3. Extract network-security features.
-4. Implement signature/rule-based detection.
-5. Implement statistical anomaly detection.
-6. Integrate optional machine-learning detection.
-7. Combine detection signals into a risk score.
-8. Generate security alerts.
-9. Store network events and alerts in SQLite.
-10. Provide a SOC-style monitoring dashboard.
-11. Support alert investigation and status management.
-12. Provide automated tests.
-13. Document the architecture and cybersecurity concepts.
-
----
-
-## 🛡️ Cybersecurity Scope
-
-This project is strictly defensive.
-
-### The project DOES:
-
-* Generate synthetic network traffic data.
-* Simulate suspicious network behavior as data.
-* Analyze network-flow characteristics.
-* Detect suspicious patterns.
+* Generate synthetic network-flow data.
+* Process and extract useful network features.
+* Detect suspicious traffic using predefined rules.
 * Calculate anomaly scores.
-* Generate security alerts.
-* Support analyst investigation.
-* Demonstrate SOC workflows.
-* Demonstrate machine-learning classification.
-
-### The project DOES NOT:
-
-* Scan public networks.
-* Scan third-party systems.
-* Exploit vulnerabilities.
-* Perform penetration testing.
-* Launch denial-of-service attacks.
-* Send malicious packets.
-* Perform unauthorized monitoring.
-* Attack external systems.
-
-All suspicious behavior is represented as **synthetic data**.
+* Integrate a machine-learning detection component.
+* Calculate a 0–100 risk score.
+* Generate and store security alerts.
+* Provide APIs for dashboard data.
+* Build a SOC-style monitoring dashboard.
+* Deploy the application using GitHub and Render.
+* Demonstrate defensive cybersecurity concepts safely.
 
 ---
 
-# 🏗️ Architecture
+## 🧰 Technology Stack
 
-```text
-                   ┌───────────────────────┐
-                   │ Synthetic Traffic     │
-                   │ Generator             │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ Network Flow Records  │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ Feature Extraction    │
-                   └───────────┬───────────┘
-                               │
-             ┌─────────────────┼─────────────────┐
-             ▼                 ▼                 ▼
-      ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-      │ Rule Engine │  │  Anomaly     │  │ ML Detector │
-      │             │  │  Detector    │  │             │
-      └──────┬──────┘  └──────┬──────┘  └──────┬──────┘
-             │                 │                 │
-             └─────────────────┼─────────────────┘
-                               ▼
-                   ┌───────────────────────┐
-                   │ Risk Engine           │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ Alert Engine          │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ SQLite Security DB    │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ SOC Dashboard         │
-                   └───────────┬───────────┘
-                               │
-                               ▼
-                   ┌───────────────────────┐
-                   │ Analyst Investigation │
-                   └───────────────────────┘
-```
+| Component            | Technology    |
+| -------------------- | ------------- |
+| Programming Language | Python        |
+| Backend              | Flask         |
+| Frontend             | React         |
+| Build Tool           | Vite          |
+| Database             | SQLite        |
+| Data Processing      | Pandas, NumPy |
+| Machine Learning     | Scikit-learn  |
+| Model Storage        | Joblib        |
+| Testing              | Pytest        |
+| Version Control      | Git / GitHub  |
+| Deployment           | Render        |
 
 ---
 
-# 🧰 Technology Stack
-
-## Backend
-
-* Python
-* Flask
-* Flask-CORS
-* SQLite
-* Pandas
-* NumPy
-
-## Machine Learning
-
-* Scikit-learn
-* Random Forest
-* Joblib
-
-## Frontend
-
-* React
-* Vite
-* JavaScript
-* CSS
-
-## Testing
-
-* Pytest
-
-## Development
-
-* Git
-* GitHub
-* Windows Command Prompt
-* Python Virtual Environment
-
----
-
-# 📁 Project Structure
+## 📂 Project Structure
 
 ```text
 Network-IDS-Simulation/
@@ -207,57 +98,47 @@ Network-IDS-Simulation/
 ├── backend/
 │   ├── app.py
 │   ├── seed_database.py
-│   └── __init__.py
-│
-├── data/
-│   └── network_traffic.csv
-│
-├── docs/
-│   └── architecture.md
+│   ├── routes/
+│   ├── models/
+│   ├── services/
+│   └── utils/
 │
 ├── frontend/
-│   ├── index.html
+│   ├── src/
+│   │   ├── main.jsx
+│   │   └── styles.css
 │   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│   └── src/
-│       ├── main.jsx
-│       └── styles.css
+│   └── vite.config.js
 │
 ├── ids/
-│   ├── alert_engine.py
-│   ├── anomaly_detector.py
-│   ├── correlation.py
 │   ├── feature_extractor.py
-│   ├── risk_engine.py
 │   ├── rule_engine.py
-│   └── __init__.py
+│   ├── anomaly_detector.py
+│   ├── risk_engine.py
+│   └── alert_engine.py
 │
 ├── ml/
-│   ├── train_model.py
-│   ├── predict.py
-│   ├── evaluate.py
-│   └── __init__.py
-│
-├── reports/
-│   ├── project_report.md
-│   └── interview_questions.md
+│   └── predict.py
 │
 ├── simulator/
-│   ├── generate_dataset.py
-│   ├── traffic_simulator.py
-│   └── __init__.py
+│   └── traffic_simulator.py
+│
+├── data/
+│   ├── network_traffic.csv
+│   └── ids.db
+│
+├── models/
+│   └── ids_random_forest.joblib
 │
 ├── tests/
-│   ├── test_ids.py
-│   └── __init__.py
 │
 ├── screenshots/
 │
-├── models/
+├── docs/
+│
+├── reports/
 │
 ├── requirements.txt
-├── RUN_PROJECT.bat
 ├── .env.example
 ├── .gitignore
 └── README.md
@@ -265,223 +146,76 @@ Network-IDS-Simulation/
 
 ---
 
-# 📊 Synthetic Dataset
+## 🔍 Detection Pipeline
 
-The project generates synthetic network-flow data instead of collecting real network packets.
+### 1. Synthetic Traffic
 
-The generated dataset contains:
+The project uses generated network-flow records instead of real network traffic.
 
-**5,000 network-flow records**
-
-The dataset includes fields such as:
+The dataset contains:
 
 ```text
-flow_id
-timestamp
-source_ip
-destination_ip
-source_port
-destination_port
-protocol
-packet_count
-byte_count
-duration_seconds
-connection_count
-failed_connection_count
-syn_count
-rst_count
-average_packet_size
-label
-scenario_type
+5,000 synthetic network-flow records
 ```
 
-Reserved documentation IP ranges are used for synthetic traffic representation:
-
-```text
-192.0.2.0/24
-198.51.100.0/24
-203.0.113.0/24
-```
+This allows the project to demonstrate detection concepts without interacting with real systems.
 
 ---
 
-# 🧪 Traffic Scenarios
+### 2. Feature Extraction
 
-The generator supports normal and suspicious synthetic scenarios.
+Network-flow information is transformed into features that can be evaluated by the IDS components.
 
-### Normal scenarios
-
-```text
-NORMAL_WEB
-NORMAL_DNS
-NORMAL_SSH
-NORMAL_EMAIL
-NORMAL_DATABASE
-```
-
-### Suspicious scenarios
-
-```text
-HIGH_CONNECTION_RATE
-REPEATED_FAILED_CONNECTIONS
-MULTI_PORT_PROBING_PATTERN
-SYN_HEAVY_PATTERN
-UNUSUAL_PORT_ACTIVITY
-HIGH_TRAFFIC_VOLUME
-```
-
-These scenarios represent **data patterns**, not actual attacks.
+Examples include traffic volume, connection behavior, ports, and other flow-level characteristics.
 
 ---
 
-# 🔎 Feature Engineering
-
-The feature extraction module derives security-relevant characteristics from network flows.
-
-Important features include:
-
-```text
-packet_count
-byte_count
-duration
-bytes_per_second
-packets_per_second
-average_packet_size
-connection_count
-failed_connection_count
-failure_ratio
-syn_count
-rst_count
-syn_ratio
-unique_destination_ports
-unique_destination_ips
-connection_rate
-```
-
-These features allow the IDS to reason about:
-
-* Traffic volume
-* Connection frequency
-* Failed connections
-* SYN activity
-* Destination diversity
-* Packet rates
-* Byte rates
-* Behavioral deviations
-
----
-
-# 🚨 Signature-Based Detection
+### 3. Rule-Based Detection
 
 The rule engine identifies predefined suspicious patterns.
 
-Examples include:
+Examples observed in the dashboard include:
 
-### High Connection Rate
-
-Detects unusually high connection activity.
-
-### Repeated Failed Connections
-
-Detects excessive failed connection attempts.
-
-### Multiple Destination Ports
-
-Detects unusually broad destination-port activity.
-
-### SYN-Heavy Behavior
-
-Detects unusually high SYN activity.
-
-### Unusual Service-Port Activity
-
-Detects unexpected activity involving service ports.
-
-### High Traffic Volume
-
-Detects abnormally large traffic volumes.
-
-A rule match indicates **suspicious behavior requiring investigation**. It does not automatically prove malicious activity.
+* Repeated failed connections
+* Excessive connection rate
+* High destination port/connection activity
+* High traffic volume
 
 ---
 
-# 📈 Anomaly Detection
+### 4. Anomaly Detection
 
-The project includes statistical anomaly analysis.
+The anomaly component calculates a statistical anomaly score to identify traffic that differs from expected behavior.
 
-The anomaly detector produces an:
-
-```text
-Anomaly Score: 0–100
-```
-
-Higher values indicate greater deviation from the expected behavior represented by the project's baseline.
-
-Anomaly detection is useful for identifying unusual patterns that may not match predefined signatures.
-
-However, anomaly detection can generate false positives because unusual legitimate behavior may also deviate from the baseline.
+The anomaly score contributes to the overall risk assessment.
 
 ---
 
-# 🤖 Machine Learning
+### 5. Machine Learning
 
-The project includes an optional machine-learning component.
+A Random Forest model is integrated into the detection pipeline.
 
-The implemented model uses:
+The trained model is stored using Joblib:
 
 ```text
-Random Forest
+models/ids_random_forest.joblib
 ```
 
-The training process uses the generated synthetic dataset.
+The machine-learning component provides an additional detection signal alongside the rule and anomaly components.
 
-The project also includes ML prediction and evaluation modules.
-
-Evaluation concepts include:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* Confusion Matrix
-
-## Important Evaluation Note
-
-The generated dataset is synthetic and contains clearly defined scenarios. Therefore, machine-learning performance on this dataset should **not** be interpreted as equivalent to performance on real enterprise network traffic.
-
-The model's reported results are valid for the generated experimental dataset only.
+> **Important:** The recorded ML evaluation produced 1.00 accuracy, precision, recall, and F1 on the synthetic dataset. These values should not be interpreted as real-world IDS performance because the dataset is synthetic and controlled for demonstration.
 
 ---
 
-# 🔀 Hybrid Detection
+## ⚠️ Risk Classification
 
-The project combines multiple detection approaches:
-
-```text
-Signature Detection
-        +
-Anomaly Detection
-        +
-Optional ML Detection
-        =
-Hybrid IDS
-```
-
-The goal is to demonstrate how different detection signals can contribute to security analysis.
-
-When ML is unavailable, the risk engine can operate using rule-based and anomaly signals.
-
----
-
-# ⚠️ Risk Scoring
-
-The system produces a risk score between:
+The IDS converts detection signals into a risk score from:
 
 ```text
-0–100
+0 – 100
 ```
 
-The project's classification thresholds are:
+The implemented classification ranges are:
 
 | Risk Score | Classification         |
 | ---------: | ---------------------- |
@@ -491,183 +225,139 @@ The project's classification thresholds are:
 |      61–80 | HIGH RISK              |
 |     81–100 | CRITICAL INVESTIGATION |
 
-These thresholds are project-defined assumptions used for demonstration and can be tuned for different environments.
-
 ---
 
-# 🚨 Security Alerts
+## 🚨 Alert System
 
-Detected suspicious behavior is converted into security alerts.
+Detected suspicious activity is converted into security alerts.
 
-Alerts contain information such as:
+Each alert can contain information such as:
 
-```text
-Alert ID
-Timestamp
-Source IP
-Destination IP
-Protocol
-Source Port
-Destination Port
-Rule ID
-Alert Type
-Severity
-Risk Score
-Description
-Status
-```
+* Timestamp
+* Source IP
+* Destination
+* Alert type
+* Severity
+* Risk score
+* Status
 
-Alert statuses include:
+The dashboard supports investigation-oriented alert statuses such as:
 
 ```text
 NEW
+↓
 INVESTIGATING
+↓
 RESOLVED
-FALSE_POSITIVE
 ```
 
 ---
 
-# 👨‍💻 SOC Investigation Workflow
+## 📊 Live Deployment Results
 
-The project demonstrates a simplified SOC workflow:
+The deployed dashboard currently reports:
+
+| Metric              | Value |
+| ------------------- | ----: |
+| Total Network Flows | 5,000 |
+| Normal Traffic      | 2,199 |
+| Suspicious Traffic  | 2,801 |
+| Open Alerts         | 2,936 |
+| Critical Alerts     |     1 |
+| Average Risk Score  | 29.52 |
+
+Traffic distribution:
 
 ```text
-Network Event
-      ↓
-IDS Detection
-      ↓
-Alert
-      ↓
-SOC Queue
-      ↓
-Triage
-      ↓
-Investigation
-      ↓
-Determine Severity
-      ↓
-Resolve / Escalate / False Positive
-      ↓
-Document
+Normal      44%
+Suspicious  56%
 ```
-
-Analysts can inspect alert details and update the investigation status.
 
 ---
 
-# 🖥️ SOC Dashboard
+## 📈 Dashboard Features
 
-The React dashboard provides a security-monitoring view containing:
+The React SOC dashboard provides:
 
-### Dashboard Metrics
-
-* Total Network Flows
-* Normal Traffic
-* Suspicious Traffic
-* Open Alerts
-* Critical Alerts
-* Average Risk Score
-
-### Analytics
-
-* Traffic over time
-* Normal vs suspicious traffic
+* Backend connection status
+* Total network-flow count
+* Normal traffic statistics
+* Suspicious traffic statistics
+* Open-alert count
+* Critical-alert count
+* Average risk score
+* Traffic-over-time visualization
+* Traffic classification
 * Top alert types
-
-### Alert Management
-
-* Recent alerts
-* Alert details
-* Source and destination information
-* Ports and protocol
-* Rule information
-* Severity
-* Risk score
-* Investigation status
-
-The dashboard polls the backend API for updated information.
+* Recent security alerts
+* Alert severity
+* Alert risk scores
+* Alert investigation status
 
 ---
 
-# 🔌 REST API
+## 🔌 API
 
-The backend exposes REST-style endpoints for IDS data and dashboard operations.
+The Flask backend exposes API endpoints used by the dashboard.
 
-## Network Flows
-
-```http
-POST /api/flows
-GET /api/flows
-GET /api/flows/{id}
-```
-
-## Alerts
-
-```http
-GET /api/alerts
-GET /api/alerts/{id}
-PUT /api/alerts/{id}/status
-POST /api/alerts/{id}/notes
-```
-
-## Dashboard
+### Dashboard Statistics
 
 ```http
 GET /api/dashboard/stats
-GET /api/dashboard/traffic
-GET /api/dashboard/alerts
 ```
 
-## Rules
+Example:
+
+```json
+{
+  "average_risk_score": 29.52,
+  "critical_alerts": 1,
+  "normal_traffic": 2199,
+  "open_alerts": 2936,
+  "suspicious_traffic": 2801,
+  "total_flows": 5000
+}
+```
+
+### Alerts
 
 ```http
-GET /api/rules
+GET /api/alerts
 ```
+
+### Traffic Data
+
+```http
+GET /api/dashboard/traffic
+```
+
+Alert status operations are also provided by the backend for the investigation workflow.
 
 ---
 
-# 🗄️ Database
+## 💻 Running Locally
 
-The project uses SQLite for local storage.
+### 1. Clone the repository
 
-The database is generated as:
-
-```text
-data/ids.db
-```
-
-It stores network-flow and alert information used by the backend and dashboard.
-
-SQLite was selected because it provides a lightweight database suitable for a beginner-friendly local cybersecurity demonstration.
-
----
-
-# ⚙️ Installation
-
-## 1. Clone the repository
-
-```cmd
+```bash
 git clone https://github.com/vyshnaviporandla/Network-Intrusion-Detection-System-Simulation.git
 ```
 
-```cmd
+```bash
 cd Network-Intrusion-Detection-System-Simulation
 ```
 
 ---
 
-## 2. Create a Python virtual environment
+### 2. Create a Python virtual environment
+
+Windows:
 
 ```cmd
 python -m venv venv
 ```
 
----
-
-## 3. Activate the environment
-
-Windows:
+Activate it:
 
 ```cmd
 venv\Scripts\activate
@@ -675,7 +365,7 @@ venv\Scripts\activate
 
 ---
 
-## 4. Install Python dependencies
+### 3. Install Python dependencies
 
 ```cmd
 pip install -r requirements.txt
@@ -683,75 +373,28 @@ pip install -r requirements.txt
 
 ---
 
-## 5. Install frontend dependencies
+### 4. Seed the database
 
 ```cmd
-cd frontend
-npm install
-cd ..
+cd backend
+python seed_database.py
 ```
 
----
-
-# ▶️ Running the Project
-
-## Generate the dataset
-
-From the project root:
-
-```cmd
-python simulator\generate_dataset.py
-```
-
-This generates:
+The database is created under:
 
 ```text
-data\network_traffic.csv
+data/ids.db
 ```
 
 ---
 
-## Train the machine-learning model
+### 5. Start the Flask backend
 
 ```cmd
-python ml\train_model.py
+python app.py
 ```
 
-The trained model is stored under:
-
-```text
-models/
-```
-
----
-
-## Seed the database
-
-```cmd
-python backend\seed_database.py
-```
-
-The seed process loads the synthetic network traffic and processes it through the IDS pipeline.
-
-Example project result:
-
-```text
-Flows processed : 5000
-Alerts generated: 2741
-Database        : data\ids.db
-```
-
----
-
-# 🚀 Start the Backend
-
-From the project root:
-
-```cmd
-python backend\app.py
-```
-
-The Flask backend runs locally at:
+The local backend runs at:
 
 ```text
 http://127.0.0.1:5000
@@ -759,456 +402,236 @@ http://127.0.0.1:5000
 
 ---
 
-# 🌐 Start the Frontend
+### 6. Start the React frontend
 
-Open another Command Prompt.
-
-Navigate to:
+Open another Command Prompt:
 
 ```cmd
 cd frontend
-```
-
-Run:
-
-```cmd
+npm install
 npm run dev
 ```
 
-Vite will provide the local frontend address.
-
-Open that address in your browser.
+Vite will provide the local development URL.
 
 ---
 
-# 🧪 Testing
+## 🧪 Testing
 
-The project includes automated tests using Pytest.
+The project includes an automated Pytest suite covering core IDS behavior.
 
 Run:
 
 ```cmd
-python -m pytest -q
+pytest
 ```
 
-The implemented test suite covers core IDS functionality including:
-
-* Feature extraction
-* Rule detection
-* Anomaly scoring
-* Risk scoring
-* IDS-related processing
-
-Current project validation:
+Current implementation:
 
 ```text
-5 passed
+5 tests passing
 ```
 
 ---
 
-# 📊 Project Results
+## ☁️ Deployment
 
-The current implementation successfully generated and processed:
+The application is deployed using Render.
 
-| Metric                    |   Result |
-| ------------------------- | -------: |
-| Synthetic network flows   |    5,000 |
-| Generated security alerts |    2,741 |
-| Automated tests           | 5 passed |
-| Backend                   |  Working |
-| Frontend dashboard        |  Working |
-| Alert investigation       |  Working |
-| Alert status management   |  Working |
-| ML model                  |  Trained |
+### Backend
 
-The alerts are generated from synthetic scenarios and therefore represent a controlled educational experiment rather than production security telemetry.
+The backend is deployed as a Web Service.
 
----
-
-# 🔬 False Positives and False Negatives
-
-## False Positive
-
-A legitimate event is incorrectly classified as suspicious.
-
-Example:
+Configuration:
 
 ```text
-A legitimate backup operation produces unusually high network traffic.
+Root Directory:
+backend/
+
+Build Command:
+pip install -r ../requirements.txt
+
+Start Command:
+python seed_database.py && gunicorn app:app
 ```
 
-The IDS may interpret the traffic as suspicious because it exceeds a configured threshold.
+### Frontend
 
-## False Negative
+The React application is deployed as a Static Site.
 
-Suspicious behavior is classified as normal.
-
-False negatives are important because an IDS can miss activity that does not match its rules or baseline.
-
-Potential improvements include:
-
-* Better behavioral baselines
-* Threshold tuning
-* Multiple detection methods
-* Contextual information
-* Analyst feedback
-* Improved machine-learning models
-* Larger and more representative datasets
-
----
-
-# 🧠 IDS vs IPS
-
-## IDS
-
-An Intrusion Detection System:
+Configuration:
 
 ```text
-Detects → Analyzes → Alerts
+Root Directory:
+frontend/
+
+Build Command:
+npm install && npm run build
+
+Publish Directory:
+dist
 ```
-
-It primarily focuses on identifying potentially suspicious activity.
-
-## IPS
-
-An Intrusion Prevention System can additionally take preventive action against detected activity.
-
-This project intentionally implements an **IDS simulation** and does not automatically block or disrupt network traffic.
 
 ---
 
-# 🔍 Signature vs Anomaly Detection
+## 🔐 Security & Ethical Scope
 
-| Feature            | Signature-Based                | Anomaly-Based               |
-| ------------------ | ------------------------------ | --------------------------- |
-| Detection approach | Known patterns                 | Behavioral deviations       |
-| Explainability     | High                           | Moderate                    |
-| Unknown patterns   | May miss them                  | Can potentially detect them |
-| False positives    | Can be lower for precise rules | Can be higher               |
-| Main strength      | Known suspicious behavior      | Unusual behavior            |
+This project follows a defensive cybersecurity approach.
 
-The project combines these approaches to demonstrate hybrid security monitoring.
+### The project DOES:
+
+* Generate synthetic network traffic.
+* Analyze simulated traffic.
+* Detect simulated suspicious patterns.
+* Generate simulated security alerts.
+* Demonstrate SOC monitoring concepts.
+* Use safe documentation/test IP ranges.
+
+### The project DOES NOT:
+
+* Scan real networks.
+* Perform exploitation.
+* Perform unauthorized access.
+* Launch DDoS attacks.
+* Probe third-party systems.
+* Collect real users' network traffic.
+* Deploy malware.
+* Provide offensive attack automation.
 
 ---
 
-# 🧩 Event vs Alert vs Incident
+## 🧠 Key Cybersecurity Concepts Demonstrated
 
-### Event
+### Observation
 
-An observed network activity record.
+A network-flow record representing observed traffic information.
 
-```text
-Example:
-A connection between two synthetic IP addresses.
-```
+### Indicator
+
+A feature or behavior that may provide evidence of suspicious activity.
 
 ### Alert
 
-An event that crosses a detection rule or risk threshold and requires investigation.
+A generated notification requiring analyst attention.
+
+### Threat
+
+A potential malicious or harmful condition represented within the simulation.
 
 ### Incident
 
-A confirmed or sufficiently investigated security event requiring incident-management action.
+An event requiring investigation or response.
 
-A rule match alone does not automatically prove that an event is a confirmed incident.
+### Risk
 
----
+A numerical representation of the potential security significance of detected behavior.
 
-# 🛡️ Security and Privacy
+### Confidence
 
-The project follows defensive-security principles.
-
-Important considerations for production systems include:
-
-* Authentication
-* Authorization
-* Least privilege
-* HTTPS
-* Secure API configuration
-* Environment-based secrets
-* Log protection
-* Input validation
-* API rate limiting
-* Audit logging
-* Protection of analyst notes
-* Avoiding unnecessary packet-payload storage
-
-Network-security telemetry can itself contain sensitive information, so access to IDS data should be controlled.
+How strongly the implemented detection signals support a detection conclusion.
 
 ---
 
-# ⚠️ Limitations
+## ⚠️ Current Limitations
 
-This project is an educational IDS simulation and has several limitations.
+This is an educational IDS simulation rather than a production enterprise IDS.
 
-### Synthetic Data
+Current limitations include:
 
-The dataset does not represent the full complexity of real enterprise networks.
-
-### Simplified Detection
-
-The detection rules use predefined thresholds.
-
-### Limited Baseline
-
-The anomaly detector uses a simplified baseline rather than a continuously learned enterprise baseline.
-
-### ML Dataset
-
-The machine-learning model is trained on synthetic data.
-
-### Local Deployment
-
-The current implementation is designed for local demonstration.
-
-### No Automated Prevention
-
-The system detects and reports suspicious activity but does not automatically block traffic.
-
-### Limited Authentication
-
-The current educational dashboard does not implement a complete production-grade SOC authentication system.
+* Synthetic data rather than live network telemetry.
+* Simplified anomaly detection.
+* Simplified machine-learning feature set.
+* SQLite used for the demonstration database.
+* Five automated tests in the current implementation.
+* Simplified SOC dashboard.
+* No MITRE ATT&CK mapping in the current application.
+* No SIEM integration.
+* No production-scale distributed processing.
+* Cloud SQLite data is suitable for demonstration but is not a substitute for production persistent database architecture.
 
 ---
 
-# 🔮 Future Improvements
+## 🔮 Future Improvements
 
-Possible defensive improvements include:
+Potential future development includes:
 
-* Authorized PCAP ingestion
-* Real-time flow ingestion
-* Zeek integration
-* Suricata integration
-* SIEM integration
-* Threat-intelligence enrichment
-* Improved anomaly models
-* Behavioral baselines
-* Advanced alert correlation
-* Detection-rule tuning
-* User/entity behavior analytics
-* Cloud IDS monitoring
-* Container deployment
-* Centralized logging
-* Model-drift monitoring
-* Production authentication and authorization
+* Larger and more diverse synthetic datasets.
+* More sophisticated anomaly detection.
+* Additional ML models.
+* Model evaluation using independent test data.
+* Explainable ML results.
+* MITRE ATT&CK technique mapping.
+* Advanced incident-management workflows.
+* More dashboard filters and visualizations.
+* Production database integration.
+* SIEM integration.
+* Authentication and role-based access control.
+* Persistent cloud storage.
+* Expanded automated testing.
+* Containerized deployment.
 
 ---
 
-# 🧩 MITRE ATT&CK Considerations
+## 📚 Learning Outcomes
 
-Network-security alerts can potentially be mapped to the MITRE ATT&CK framework when sufficient evidence exists.
+This project provided practical experience with:
 
-However:
-
-> A statistical anomaly does not automatically prove a specific ATT&CK technique.
-
-ATT&CK mapping should be based on supporting evidence and can help with:
-
-* Detection documentation
-* SOC investigation
-* Threat hunting
-* Security reporting
-
-This project keeps ATT&CK interpretation at a high level because its traffic is synthetic.
-
----
-
-# 📡 SIEM Integration Concept
-
-In a production environment, IDS alerts could be forwarded to a Security Information and Event Management system.
-
-A possible architecture would be:
-
-```text
-Network Traffic
-      ↓
-IDS
-      ↓
-Security Alerts
-      ↓
-SIEM
-      ↓
-Correlation
-      ↓
-SOC Analyst
-      ↓
-Investigation / Response
-```
-
-The current project demonstrates the IDS and SOC-analysis concepts locally without requiring a commercial SIEM platform.
-
----
-
-# 📸 Recommended Screenshots
-
-For project documentation, capture:
-
-```text
-01-project-structure.png
-02-architecture.png
-03-synthetic-dataset.png
-04-traffic-simulation.png
-05-feature-extraction.png
-06-rule-detection.png
-07-anomaly-score.png
-08-risk-score.png
-09-alert-generated.png
-10-soc-dashboard.png
-11-traffic-chart.png
-12-alert-investigation.png
-13-alert-status.png
-14-database-records.png
-15-ml-evaluation.png
-16-confusion-matrix.png
-17-automated-tests.png
-18-api-response.png
-19-github-repository.png
-20-readme-preview.png
-```
-
----
-
-# 📚 Learning Outcomes
-
-Through this project, the following concepts were practiced:
-
-* Network security fundamentals
-* Intrusion Detection Systems
-* Network-flow analysis
-* Feature engineering
-* Signature-based detection
+* Network security monitoring
+* IDS architecture
+* Rule-based detection
 * Anomaly detection
+* Machine learning for cybersecurity
 * Risk scoring
-* Security alert generation
-* Alert investigation
-* SOC workflows
-* Machine learning
-* Classification metrics
+* Alert generation
+* Flask REST APIs
+* React dashboards
 * SQLite database design
-* REST API development
-* React dashboard development
+* Python data processing
 * Automated testing
-* Git and GitHub
-* Defensive cybersecurity practices
+* Git/GitHub workflows
+* Cloud deployment
+* SOC concepts
 
 ---
 
-# 💼 Project Highlights
-
-### Technical Highlights
-
-```text
-Python
-Flask
-React
-SQLite
-Pandas
-NumPy
-Scikit-learn
-Random Forest
-Pytest
-REST API
-Git/GitHub
-```
-
-### Cybersecurity Highlights
-
-```text
-Network Traffic Analysis
-Intrusion Detection
-Signature Detection
-Anomaly Detection
-Security Alerts
-Risk Scoring
-SOC Workflow
-Incident Investigation
-Security Analytics
-```
-
----
-
-# 🎓 Educational Use
-
-This project is intended for:
-
-* Cybersecurity students
-* Network-security learners
-* SOC analyst preparation
-* Python practice
-* Machine-learning experimentation
-* Academic project demonstrations
-* Defensive cybersecurity portfolios
-
----
-
-# ⚖️ Ethical Disclaimer
-
-This project is designed exclusively for defensive cybersecurity education.
-
-All suspicious network behavior is represented using synthetic data or authorized isolated lab environments.
-
-Do not use this project to scan, probe, attack, exploit, or disrupt systems that you do not own or have explicit authorization to test.
-
----
-
-# 👤 Author
+## 👩‍💻 Author
 
 **Vyshnavi Porandla**
-
-Cybersecurity • Network Security • Python • Machine Learning • Security Analytics
 
 GitHub:
 
 https://github.com/vyshnaviporandla
 
----
-
-# ⭐ Project Repository
-
-**Network Intrusion Detection System Simulation**
-
-GitHub repository:
+Repository:
 
 https://github.com/vyshnaviporandla/Network-Intrusion-Detection-System-Simulation
 
 ---
 
-# 📌 Project Status
+## 📄 Project Status
 
 ```text
-Project Type: Academic / Defensive Cybersecurity
-Status: Completed Core Implementation
-Dataset: Synthetic
-Flows: 5,000
-Alerts: 2,741
-Automated Tests: 5 passed
-Backend: Flask
-Frontend: React + Vite
-Database: SQLite
-ML: Random Forest
+✅ Synthetic dataset generated
+✅ IDS detection pipeline implemented
+✅ Rule-based detection implemented
+✅ Anomaly detection implemented
+✅ ML component implemented
+✅ Risk scoring implemented
+✅ Alert system implemented
+✅ SQLite database implemented
+✅ REST API implemented
+✅ React SOC dashboard implemented
+✅ Automated tests implemented
+✅ GitHub repository created
+✅ Backend deployed
+✅ Frontend deployed
+✅ Live dashboard connected to backend
 ```
 
 ---
 
-## 🚀 Final Summary
+## ⚠️ Disclaimer
 
-The **Network Intrusion Detection System (IDS) Simulation** demonstrates an end-to-end defensive security workflow:
+This project is created for **educational and defensive cybersecurity purposes**.
 
-```text
-Generate
-   ↓
-Analyze
-   ↓
-Detect
-   ↓
-Score
-   ↓
-Alert
-   ↓
-Investigate
-   ↓
-Document
-```
-
-The project provides a practical demonstration of how network-flow monitoring, rule-based detection, anomaly detection, machine learning, risk scoring, alert management, and SOC-style investigation can work together in a controlled cybersecurity environment.
+All network activity represented by the application is synthetic. The project should not be used to monitor, scan, attack, exploit, or interfere with systems without explicit authorization.
